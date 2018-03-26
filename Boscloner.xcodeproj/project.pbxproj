@@ -14,56 +14,17 @@
 		CE8D1CD5205DB8DF00601A2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8D1CD3205DB8DF00601A2B /* LaunchScreen.storyboard */; };
 		CE8D1CDE205DB93900601A2B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE8D1CDD205DB93900601A2B /* CoreBluetooth.framework */; };
 		CE8D1CE5205F33AC00601A2B /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D1CE3205F33AC00601A2B /* HistoryViewController.swift */; };
-		CE8D1CE6205F33AC00601A2B /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8D1CE4205F33AC00601A2B /* HistoryViewController.xib */; };
 		CE8D1CEB2060611A00601A2B /* settingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D1CE92060611A00601A2B /* settingsViewController.swift */; };
-		CE8D1CEC2060611A00601A2B /* settingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE8D1CEA2060611A00601A2B /* settingsViewController.xib */; };
-		CEBA1B8E206471C000972438 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEBA1B8C206471C000972438 /* Interface.storyboard */; };
-		CEBA1B90206471C000972438 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBA1B8F206471C000972438 /* Assets.xcassets */; };
-		CEBA1B97206471C000972438 /* BosclonerWatchApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = CEBA1B96206471C000972438 /* BosclonerWatchApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		CEBA1B9C206471C000972438 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA1B9B206471C000972438 /* InterfaceController.swift */; };
-		CEBA1B9E206471C000972438 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA1B9D206471C000972438 /* ExtensionDelegate.swift */; };
-		CEBA1BA0206471C000972438 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBA1B9F206471C000972438 /* NotificationController.swift */; };
-		CEBA1BA2206471C000972438 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEBA1BA1206471C000972438 /* Assets.xcassets */; };
-		CEBA1BA7206471C000972438 /* BosclonerWatchApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = CEBA1B8A206471C000972438 /* BosclonerWatchApp.app */; };
 		CECE37A3206087160046559D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CECE37A2206087160046559D /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		CEBA1B98206471C000972438 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE8D1CBF205DB8DF00601A2B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CEBA1B95206471C000972438;
-			remoteInfo = "BosclonerWatchApp Extension";
-		};
-		CEBA1BA5206471C000972438 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CE8D1CBF205DB8DF00601A2B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CEBA1B89206471C000972438;
-			remoteInfo = BosclonerWatchApp;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		CEBA1BAB206471C000972438 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				CEBA1B97206471C000972438 /* BosclonerWatchApp Extension.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		CEBA1BAF206471C000972438 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				CEBA1BA7206471C000972438 /* BosclonerWatchApp.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,20 +41,7 @@
 		CE8D1CD6205DB8DF00601A2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE8D1CDD205DB93900601A2B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		CE8D1CE3205F33AC00601A2B /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		CE8D1CE4205F33AC00601A2B /* HistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
 		CE8D1CE92060611A00601A2B /* settingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsViewController.swift; sourceTree = "<group>"; };
-		CE8D1CEA2060611A00601A2B /* settingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = settingsViewController.xib; sourceTree = "<group>"; };
-		CEBA1B8A206471C000972438 /* BosclonerWatchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BosclonerWatchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEBA1B8D206471C000972438 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		CEBA1B8F206471C000972438 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CEBA1B91206471C000972438 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEBA1B96206471C000972438 /* BosclonerWatchApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "BosclonerWatchApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEBA1B9B206471C000972438 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		CEBA1B9D206471C000972438 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		CEBA1B9F206471C000972438 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		CEBA1BA1206471C000972438 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CEBA1BA3206471C000972438 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEBA1BA4206471C000972438 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		CECE37A2206087160046559D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,13 +54,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEBA1B93206471C000972438 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -120,8 +61,6 @@
 			isa = PBXGroup;
 			children = (
 				CE8D1CC9205DB8DF00601A2B /* Boscloner */,
-				CEBA1B8B206471C000972438 /* BosclonerWatchApp */,
-				CEBA1B9A206471C000972438 /* BosclonerWatchApp Extension */,
 				CE8D1CC8205DB8DF00601A2B /* Products */,
 				CE8D1CDC205DB93900601A2B /* Frameworks */,
 			);
@@ -131,8 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				CE8D1CC7205DB8DF00601A2B /* Boscloner.app */,
-				CEBA1B8A206471C000972438 /* BosclonerWatchApp.app */,
-				CEBA1B96206471C000972438 /* BosclonerWatchApp Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,9 +81,7 @@
 				CE8D1CCC205DB8DF00601A2B /* ViewController.swift */,
 				CE8D1CCE205DB8DF00601A2B /* Main.storyboard */,
 				CE8D1CE92060611A00601A2B /* settingsViewController.swift */,
-				CE8D1CEA2060611A00601A2B /* settingsViewController.xib */,
 				CE8D1CE3205F33AC00601A2B /* HistoryViewController.swift */,
-				CE8D1CE4205F33AC00601A2B /* HistoryViewController.xib */,
 				CECE37A2206087160046559D /* Settings.bundle */,
 				CE8D1CD1205DB8DF00601A2B /* Assets.xcassets */,
 				CE8D1CD3205DB8DF00601A2B /* LaunchScreen.storyboard */,
@@ -161,29 +96,6 @@
 				CE8D1CDD205DB93900601A2B /* CoreBluetooth.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		CEBA1B8B206471C000972438 /* BosclonerWatchApp */ = {
-			isa = PBXGroup;
-			children = (
-				CEBA1B8C206471C000972438 /* Interface.storyboard */,
-				CEBA1B8F206471C000972438 /* Assets.xcassets */,
-				CEBA1B91206471C000972438 /* Info.plist */,
-			);
-			path = BosclonerWatchApp;
-			sourceTree = "<group>";
-		};
-		CEBA1B9A206471C000972438 /* BosclonerWatchApp Extension */ = {
-			isa = PBXGroup;
-			children = (
-				CEBA1B9B206471C000972438 /* InterfaceController.swift */,
-				CEBA1B9D206471C000972438 /* ExtensionDelegate.swift */,
-				CEBA1B9F206471C000972438 /* NotificationController.swift */,
-				CEBA1BA1206471C000972438 /* Assets.xcassets */,
-				CEBA1BA3206471C000972438 /* Info.plist */,
-				CEBA1BA4206471C000972438 /* PushNotificationPayload.apns */,
-			);
-			path = "BosclonerWatchApp Extension";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,46 +113,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				CEBA1BA6206471C000972438 /* PBXTargetDependency */,
 			);
 			name = Boscloner;
 			productName = Boscloner;
 			productReference = CE8D1CC7205DB8DF00601A2B /* Boscloner.app */;
 			productType = "com.apple.product-type.application";
-		};
-		CEBA1B89206471C000972438 /* BosclonerWatchApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CEBA1BAC206471C000972438 /* Build configuration list for PBXNativeTarget "BosclonerWatchApp" */;
-			buildPhases = (
-				CEBA1B88206471C000972438 /* Resources */,
-				CEBA1BAB206471C000972438 /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CEBA1B99206471C000972438 /* PBXTargetDependency */,
-			);
-			name = BosclonerWatchApp;
-			productName = BosclonerWatchApp;
-			productReference = CEBA1B8A206471C000972438 /* BosclonerWatchApp.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		CEBA1B95206471C000972438 /* BosclonerWatchApp Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CEBA1BA8206471C000972438 /* Build configuration list for PBXNativeTarget "BosclonerWatchApp Extension" */;
-			buildPhases = (
-				CEBA1B92206471C000972438 /* Sources */,
-				CEBA1B93206471C000972438 /* Frameworks */,
-				CEBA1B94206471C000972438 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "BosclonerWatchApp Extension";
-			productName = "BosclonerWatchApp Extension";
-			productReference = CEBA1B96206471C000972438 /* BosclonerWatchApp Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -261,14 +138,6 @@
 							};
 						};
 					};
-					CEBA1B89206471C000972438 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-					};
-					CEBA1B95206471C000972438 = {
-						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
-					};
 				};
 			};
 			buildConfigurationList = CE8D1CC2205DB8DF00601A2B /* Build configuration list for PBXProject "Boscloner" */;
@@ -285,8 +154,6 @@
 			projectRoot = "";
 			targets = (
 				CE8D1CC6205DB8DF00601A2B /* Boscloner */,
-				CEBA1B89206471C000972438 /* BosclonerWatchApp */,
-				CEBA1B95206471C000972438 /* BosclonerWatchApp Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -299,26 +166,7 @@
 				CE8D1CD5205DB8DF00601A2B /* LaunchScreen.storyboard in Resources */,
 				CE8D1CD2205DB8DF00601A2B /* Assets.xcassets in Resources */,
 				CE8D1CD0205DB8DF00601A2B /* Main.storyboard in Resources */,
-				CE8D1CE6205F33AC00601A2B /* HistoryViewController.xib in Resources */,
 				CECE37A3206087160046559D /* Settings.bundle in Resources */,
-				CE8D1CEC2060611A00601A2B /* settingsViewController.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CEBA1B88206471C000972438 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CEBA1B90206471C000972438 /* Assets.xcassets in Resources */,
-				CEBA1B8E206471C000972438 /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CEBA1B94206471C000972438 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CEBA1BA2206471C000972438 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,30 +184,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CEBA1B92206471C000972438 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CEBA1BA0206471C000972438 /* NotificationController.swift in Sources */,
-				CEBA1B9E206471C000972438 /* ExtensionDelegate.swift in Sources */,
-				CEBA1B9C206471C000972438 /* InterfaceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CEBA1B99206471C000972438 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CEBA1B95206471C000972438 /* BosclonerWatchApp Extension */;
-			targetProxy = CEBA1B98206471C000972438 /* PBXContainerItemProxy */;
-		};
-		CEBA1BA6206471C000972438 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CEBA1B89206471C000972438 /* BosclonerWatchApp */;
-			targetProxy = CEBA1BA5206471C000972438 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CE8D1CCE205DB8DF00601A2B /* Main.storyboard */ = {
@@ -376,14 +201,6 @@
 				CE8D1CD4205DB8DF00601A2B /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		CEBA1B8C206471C000972438 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CEBA1B8D206471C000972438 /* Base */,
-			);
-			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -528,80 +345,6 @@
 			};
 			name = Release;
 		};
-		CEBA1BA9206471C000972438 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8AU5A745HV;
-				INFOPLIST_FILE = "BosclonerWatchApp Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.boscloner.Boscloner.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
-			};
-			name = Debug;
-		};
-		CEBA1BAA206471C000972438 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8AU5A745HV;
-				INFOPLIST_FILE = "BosclonerWatchApp Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.boscloner.Boscloner.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
-			};
-			name = Release;
-		};
-		CEBA1BAD206471C000972438 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8AU5A745HV;
-				IBSC_MODULE = BosclonerWatchApp_Extension;
-				INFOPLIST_FILE = BosclonerWatchApp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.boscloner.Boscloner.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
-			};
-			name = Debug;
-		};
-		CEBA1BAE206471C000972438 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8AU5A745HV;
-				IBSC_MODULE = BosclonerWatchApp_Extension;
-				INFOPLIST_FILE = BosclonerWatchApp/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.boscloner.Boscloner.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4.2;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -619,24 +362,6 @@
 			buildConfigurations = (
 				CE8D1CDA205DB8DF00601A2B /* Debug */,
 				CE8D1CDB205DB8DF00601A2B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CEBA1BA8206471C000972438 /* Build configuration list for PBXNativeTarget "BosclonerWatchApp Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CEBA1BA9206471C000972438 /* Debug */,
-				CEBA1BAA206471C000972438 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CEBA1BAC206471C000972438 /* Build configuration list for PBXNativeTarget "BosclonerWatchApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CEBA1BAD206471C000972438 /* Debug */,
-				CEBA1BAE206471C000972438 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

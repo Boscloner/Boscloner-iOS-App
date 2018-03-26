@@ -30,28 +30,30 @@ extension UITableView {
 var historyLogFile = [String]()
 var historyLogFileShort = [String]()
 
+// Global Variables - BLE Info for HistoryViewController's Write Operations from Log File
+var connectedPeripheral: CBPeripheral!
+var writeCharacteristic: CBCharacteristic!
+
 
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
-
+    
     // BLE Device Info
     let BLUE_HOME_SERVICE = "FFE0"
     let WRITE_CHARACTERISTIC = "FFE1"
     let READ_CHARACTERISTIC = "FFE1"
     
     var centralManager: CBCentralManager!
-    var connectedPeripheral: CBPeripheral!
-    var writeCharacteristic: CBCharacteristic!
+    
     var readCharacteristic: CBCharacteristic!
     
     // Terminal Output (In original file)
     var characteristicASCIIValue = NSString()
-
+    
     //Clone Commands
     let cmdCloneGenericTest : String = "$!CLONE,0102030405?$"
     let cmdAutoCloneDisabled : String = "$!DISABLE_CLONE?$"
     let cmdAutoCloneEnabled : String = "$!ENABLE_CLONE?$"
     
-    var textMe : String = "00:00:00:00:00"
     var currentTimeStamp = ""
     
     var firstRun : Bool = true
@@ -65,14 +67,11 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     let terminalPrefix : String = "Boscloner$"
     var terminalOutput = [String]()
     
-//    ViewController References
-    let hVC = HistoryViewController(nibName: "HistoryViewController", bundle: nil)
-    
     
     // For app notifications
     let center = UNUserNotificationCenter.current()
     let options : UNAuthorizationOptions = [.alert, .sound, .badge];
-
+    
     
     // User Defaults - Called in ViewDidLoad
     let defaults = UserDefaults.standard
@@ -80,7 +79,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     var autoCloneDefault : String = "1"    // 1 == AutoClone Enabled, 2 == AutoClone Disabled
     
     var customWriteGlitch : Bool = true  // Since MCU Status is sent on both autoclone toggle and custom write, the app's state can get confused. This Bool keeps things on track.
-
+    
     
     // IBOutlets and IBActions
     @IBAction func customWriteIcon(_ sender: UIButton) {
@@ -100,7 +99,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             writeBLEData(string: cmdAutoCloneEnabled)
             autoCloneDefault = "1"
             self.tableView.tableViewScrollToBottom(animated: true)
-
+            
         }
         else {
             print("AutoClone is OFF")
@@ -108,7 +107,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             writeBLEData(string: cmdAutoCloneDisabled)
             autoCloneDefault = "0"
             self.tableView.tableViewScrollToBottom(animated: true)
-
         }
         
     }
@@ -145,7 +143,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             print("change visual screw up. set to 0")
             uiSwitch.isOn = false
         }
-
+        
         
         if let defaultHistoryLogFile = UserDefaults.standard.array(forKey: "HistoryLogFileKey") as? [String] {
             historyLogFile = defaultHistoryLogFile
@@ -176,7 +174,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             }
         }
         
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -219,7 +217,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
         centralManager.connect(connectedPeripheral, options: nil)
         print("Connecting to Peripheral...")
-
+        
     }
     
     
@@ -229,13 +227,13 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         print("Connected to the device!")
         
         hideActivityIndicator()
-
+        
         connectedPeripheral.delegate = self
         
         connectedPeripheral.discoverServices(nil)
     }
     
-
+    
     // Discover Services on Connected Peripheral
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         print("Service Count =\(peripheral.services!.count)")
@@ -251,7 +249,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                 peripheral.discoverCharacteristics(nil, for: aService)
             }
         }
-
+        
     }
     
     // Discover Characteristics of Services and Enabled Notifications (Allowing the App to Receive Data from BLE)
@@ -287,7 +285,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         // Putting this here, because it can only be changed after a successful BLE connection
         userDefaultAutoCloneFunction()
     }
-
+    
     
     // Receiving the notification
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
@@ -297,15 +295,13 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             characteristicASCIIValue = ASCIIstring
             print("Value Received: \((characteristicASCIIValue as String))")
             NotificationCenter.default.post(name:NSNotification.Name(rawValue: "Notify"), object: nil)
-
+            
             // Doing Formatting Stuff
             newString = (characteristicASCIIValue as String)
             parsingArray.append(newString)
             newString = parsingArray.reduce("",{$0 + $1})
             
-           //Adding an offset and range, but first...we need to merge the two strings together, and then perform this action
-         
-//          String Contains SCAN - Isolated the Badge ID
+            //          String Contains SCAN - Isolated the Badge ID
             if newString.contains("SCAN") && newString.contains("?$") {
                 print(newString + " Offsetting SCAN String")
                 
@@ -333,7 +329,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             else if newString.contains("STATUS,MCU") && customWriteGlitch == true {
                 newString = ""
                 parsingArray = [String]()
-
+                
                 if autoCloneDefault == "1" && firstRun == true{
                     terminalOutput.append("**AutoClone Status: Enabled**")
                     terminalOutput.append("**RFID Badge Type: \(RFIDBadgeType)**")
@@ -341,7 +337,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                     terminalOutput.append("Boscloner$    (Ready to Receive Data)")
                     firstRun = false
                 }
-                
+                    
                 else if autoCloneDefault == "0" && firstRun == true {
                     terminalOutput.append("**AutoClone Status: Disabled**")
                     terminalOutput.append("**RFID Badge Type: \(RFIDBadgeType)**")
@@ -349,14 +345,14 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                     terminalOutput.append("Boscloner$    (Ready to Receive Data)")
                     firstRun = false
                 }
-                
+                    
                 else if autoCloneDefault == "1" && firstRun == false {
                     terminalOutput.append("**AutoClone Status: Enabled**")
                 }
                     
                     
                 else if autoCloneDefault == "0" && firstRun == false {
-                        terminalOutput.append("**AutoClone Status: Disabled**")
+                    terminalOutput.append("**AutoClone Status: Disabled**")
                 }
                 
                 tableView.reloadData()
@@ -368,15 +364,15 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                 parsingArray = [String]()
                 tableView.reloadData()
                 print("Custom Data Written. Ignoring STATUS,MCU Signal")
-                    
-                }
+                
             }
-                    
-            else {
-                print("Data set not complete. Nothing to print just yet")
-            }
-            
         }
+            
+        else {
+            print("Data set not complete. Nothing to print just yet")
+        }
+        
+    }
     
     
     // Update UI and History Log File with Newly Retrieved Badge ID
@@ -391,33 +387,29 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         terminalOutput.append("Boscloner$    \(badgeID)")
         
         notificationBadgeCaptured(notificationBadgeID: badgeID)
-
-        print("\(historyLogFile) + \n New Contents of History log file")
+        
+        //        print("\(historyLogFile) + \n New Contents of History log file")
         print("\(historyLogFileShort) + \n New Contents of History log file - short")
-
+        
         tableView.reloadData()
-
+        
         self.tableView.tableViewScrollToBottom(animated: true)
-
         
         self.defaults.set(historyLogFile, forKey: "HistoryLogFileKey")
         self.defaults.set(historyLogFileShort, forKey: "HistoryLogFileShortKey")
-
+        
     }
     
     
     
     // Send Data to Boscloner Board
     func writeBLEData(string: String) {
-
+        
         let data = string.data(using: String.Encoding.ascii)
         
         print("Writing the data: \(data!)")
         
         connectedPeripheral.writeValue(data!, for: writeCharacteristic, type: CBCharacteristicWriteType.withoutResponse)
-        
-        print("OMG YOU DID IT!")
-    
     }
     
     @objc func hideActivityIndicator() {
@@ -425,13 +417,13 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         shadowView.isHidden = true
     }
     
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     //Central Manager Delegates
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
@@ -452,7 +444,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             print("Power is On")
         }
     }
-
+    
     
     // Adding Necessary Protocol Stubs for TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -482,10 +474,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
             
             //getting the input values from user
-            let customBadgeString = alertController.textFields?[0].text
-            
-            self.textMe = customBadgeString!
-            self.writeCustomBadge()
+            if let customBadgeString = alertController.textFields?[0].text {
+                self.writeCustomBadge(customBadge: "\(customBadgeString)")
+            }
             
         }
         
@@ -505,19 +496,23 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func writeCustomBadge() {
+    func writeCustomBadge(customBadge: String) {
         customWriteGlitch = false
-        writeBLEData(string: "$!CLONE,\(textMe)?$")
-        terminalOutput.append("Custom ID Written: \(textMe)")
+        writeBLEData(string: "$!CLONE,\(customBadge)?$")
+        terminalOutput.append("Custom ID Written: \(customBadge)")
         timestampRoutine()
-        historyLogFile.append(textMe + "               " + currentTimeStamp)
-        historyLogFileShort.append(textMe)
-        self.defaults.set(historyLogFile, forKey: "\(textMe)" + "               " + "\(currentTimeStamp)")
-        self.defaults.set(historyLogFileShort, forKey: "\(textMe)")
+        historyLogFile.append(customBadge + "               " + currentTimeStamp)
+        historyLogFileShort.append(customBadge)
+        self.defaults.set(historyLogFile, forKey: "\(customBadge)" + "               " + "\(currentTimeStamp)")
+        self.defaults.set(historyLogFileShort, forKey: "\(customBadge)")
         tableView.reloadData()
-        textMe = "00:00:00:00:00"
         self.tableView.tableViewScrollToBottom(animated: true)
-
+    }
+    
+    func writeCustomBadgeFromHistory(historyBadge: String) {
+        customWriteGlitch = false
+        writeBLEData(string: "$!CLONE,\(historyBadge)?$")
+        terminalOutput.append("On-Demand Write from History: \(historyBadge)")
     }
     
     
@@ -525,16 +520,16 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     func timestampRoutine() {
         let date = Date() // save date, so all components use the same date
         let calendar = Calendar.current
-
+        
         let month = calendar.component(.month, from: date)
         let day = calendar.component(.day, from: date)
         let year = calendar.component(.year, from: date)
         let hour = calendar.component(.hour, from: date)
         let minute = calendar.component(.minute, from: date)
         let second = calendar.component(.second, from: date)
-
+        
         currentTimeStamp = "\(month)-\(day)-\(year)  \(hour):\(minute):\(second)"
-//        currentTimeStamp = String(describing: Date())
+        //        currentTimeStamp = String(describing: Date())
         
     }
     // Sending Local Notification When Badge is Captured
@@ -548,29 +543,30 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
-//        print("badge Captured! Notification Sent")
+        //        print("badge Captured! Notification Sent")
         
     }
     
     
     
-//     User Default Functions - Called in "didUpdateNotificationStateFor"
+    //     User Default Functions - Called in "didUpdateNotificationStateFor"
     
     func userDefaultAutoCloneFunction() {
         if autoCloneDefault == "1" {
-//            uiSwitch.isOn = true
+            //            uiSwitch.isOn = true
             writeBLEData(string: cmdAutoCloneEnabled)
             print("FUNCTION  autoclone 1")
-
+            
         }
         else if autoCloneDefault == "0" {
-//            uiSwitch.isOn = false
+            //            uiSwitch.isOn = false
             customWriteGlitch = true
             writeBLEData(string: cmdAutoCloneDisabled)
             print("Function autoclone 0")
         }
     }
-
-
-
+    
+    
+    
 }
+

@@ -10,11 +10,12 @@ import UIKit
 
 class HistoryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var VC = ViewController()
     
     // Creating Timer to Update historyTableView on a Regular Interval
     var historyViewTableUpdateTimer = Timer()
     
-   var selectedBadge = 0
+    var selectedBadge = 0
     
     // Terminal Output (In original file)
     var characteristicASCIIValue = NSString()
@@ -23,7 +24,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     // IBAction && IBOutlets
     @IBOutlet weak var historyTableView: UITableView!
     
-
+    
     @IBAction func historyShareButton(_ sender: UIBarButtonItem) {
         
         // Converting the Log File to Text for easy sharing
@@ -33,11 +34,11 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         activityVC.popoverPresentationController?.sourceView = self.view
         
         self.present(activityVC, animated: true, completion: nil)
-        }
+    }
     
     
     @IBAction func historyDeleteButton(_ sender: UIBarButtonItem) {
-    // Adding the Pop-Up Dialog
+        // Adding the Pop-Up Dialog
         showInputDialogDeleteHistory()
     }
     
@@ -54,7 +55,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         historyViewTableUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HistoryViewController.updateTableView), userInfo: nil, repeats: true)
         
     }
-
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -70,7 +71,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     
-// Table View Protocol Stubs
+    // Table View Protocol Stubs
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -78,12 +79,12 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection: Int) -> Int {
         return historyLogFile.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = historyTableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")!
         let text = historyLogFile[indexPath.row]
-
+        
         cell.textLabel?.text = text
         cell.textLabel?.textColor = UIColor.black
         return cell
@@ -113,9 +114,6 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
             // Clears the User Default HistoryLogFileKey Value
             UserDefaults.standard.set(historyLogFile, forKey: "HistoryLogFileKey")
             UserDefaults.standard.set(historyLogFile, forKey: "HistoryLogFileShortKey")
-
-            
-            
             
         }
         
@@ -136,7 +134,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         
         //the confirm action taking the inputs
         let confirmAction = UIAlertAction(title: "Write", style: .default) { (_) in
-            ViewController().writeCustomBadge()
+            self.VC.writeCustomBadgeFromHistory(historyBadge: "\(historyLogFileShort[self.selectedBadge])")
         }
         
         //Cancel Action Trigged, Nothing Happens
@@ -152,3 +150,4 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
 }
+
