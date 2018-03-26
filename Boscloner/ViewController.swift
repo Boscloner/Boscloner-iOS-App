@@ -397,9 +397,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
         self.defaults.set(historyLogFile, forKey: "HistoryLogFileKey")
         self.defaults.set(historyLogFileShort, forKey: "HistoryLogFileShortKey")
-        
     }
-    
     
     
     // Send Data to Boscloner Board
@@ -555,14 +553,12 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         if autoCloneDefault == "1" {
             //            uiSwitch.isOn = true
             writeBLEData(string: cmdAutoCloneEnabled)
-            print("FUNCTION  autoclone 1")
             
         }
         else if autoCloneDefault == "0" {
             //            uiSwitch.isOn = false
             customWriteGlitch = true
             writeBLEData(string: cmdAutoCloneDisabled)
-            print("Function autoclone 0")
         }
     }
     
