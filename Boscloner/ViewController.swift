@@ -33,6 +33,13 @@ var historyLogFileShort = [String]()
 // Global Variables - BLE Info for HistoryViewController's Write Operations from Log File
 var connectedPeripheral: CBPeripheral!
 var writeCharacteristic: CBCharacteristic!
+var isBLEAlive : Bool = false
+var isBLETimerStarted : Bool = false
+var isBLEAliveTimer = Timer()
+var isBLEAliveNotificationTimer = Timer()
+
+var disconnectedNotification : Bool = false
+var reconnectedNotification : Bool = false
 
 
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
@@ -43,7 +50,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     let READ_CHARACTERISTIC = "FFE1"
     
     var centralManager: CBCentralManager!
-    
     var readCharacteristic: CBCharacteristic!
     
     // Terminal Output (In original file)
@@ -83,7 +89,11 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     // IBOutlets and IBActions
     @IBAction func customWriteIcon(_ sender: UIButton) {
-        showInputDialog()
+        if connectedPeripheral?.state != CBPeripheralState.connected {
+        notConnectedWarning()
+        } else {
+            showInputDialog()
+        }
     }
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var shadowView: UIView!
@@ -92,6 +102,10 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     // AutoClone Button - Manual Toggle
     @IBAction func uiSwitchValueChanged(_ sender: UISwitch) {
+        
+        if connectedPeripheral?.state != CBPeripheralState.connected {
+            notConnectedWarning()
+        } else {
         
         if (sender.isOn) {
             print("AutoClone is ON")
@@ -109,6 +123,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             self.tableView.tableViewScrollToBottom(animated: true)
         }
         
+    }
     }
     
     
@@ -137,10 +152,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
         // Change Main AutoClone Switch Visual to Reflect User Defaults
         if autoCloneDefault == "1" {
-            print("Changing Visual screw up. Set to 1")
             uiSwitch.isOn = true
         } else if autoCloneDefault == "0" {
-            print("change visual screw up. set to 0")
             uiSwitch.isOn = false
         }
         
@@ -180,22 +193,34 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Attempt to make a BLE Connection
-        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.scanForBLEDevice), userInfo: nil, repeats: false)
+        // isBLEAliveTimer Begins Here to Monitor the Current Connection State
+        // The App will Alert the User if the Connection has been Dropped, and will automatically reconnect when
+        // the Boscloner board is within range/available.
+        if isBLETimerStarted == true {
+            print("Timer already running. Skipping.")
+        } else {
+            isBLEAliveTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(isBLEStillAlive), userInfo: nil, repeats: true)
+            isBLETimerStarted = true
+//            isBLEAliveNotificationTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(notificationConnectionLost), userInfo: nil, repeats: true)
+            print("First Run Detected. BLE Keep Alive Timer Started. Checking BLE Connected State Every Second")
+        }
         
         activityIndicator.startAnimating()
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // Close BLE Connection if it exists
+        
     }
     
     //Begin BLE Scanning for devices that use FFE0
     @objc func scanForBLEDevice() {
         centralManager.scanForPeripherals(withServices: [CBUUID(string:BLUE_HOME_SERVICE)], options: nil)
-        
+        notificationConnectionLost()
+    
     }
     
     
@@ -284,6 +309,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         // Changing the board to reflect user's default autoclone setting
         // Putting this here, because it can only be changed after a successful BLE connection
         userDefaultAutoCloneFunction()
+        disconnectedNotification = true
+        
     }
     
     
@@ -494,6 +521,23 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         self.present(alertController, animated: true, completion: nil)
     }
     
+    
+    // BLE Device Not Connected Dialog Alert Pop-up
+    func notConnectedWarning() {
+        let alertController = UIAlertController(title: "Boscloner Unavailable (BLE)", message: "Ensure the Boscloner boards are powered on and within range.", preferredStyle: .alert)
+        
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (_) in }
+        
+        //adding the action to dialogbox
+        alertController.addAction(cancelAction)
+        
+        //finally presenting the dialog box
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    
     func writeCustomBadge(customBadge: String) {
         customWriteGlitch = false
         writeBLEData(string: "$!CLONE,\(customBadge)?$")
@@ -545,24 +589,76 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
     }
     
+    func notificationConnectionLost() {
+        
+        if disconnectedNotification == true {
+            disconnectedNotification = false
+            reconnectedNotification = true
+            let content = UNMutableNotificationContent()
+            content.title = "Connection to the Boscloner Lost"
+            content.body = "Ensure the Boscloner is powered on and within range"
+            content.sound = UNNotificationSound.default()
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+            let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+    }
+    
+    
+    func notificationConnectionRestored() {
+        
+        if disconnectedNotification == true {
+            disconnectedNotification = false
+            reconnectedNotification = false
+            let content = UNMutableNotificationContent()
+            content.title = "Boscloner Connectivity Restored"
+            content.body = "Connectivity to the Boscloner has been restored"
+            content.sound = UNNotificationSound.default()
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.1, repeats: false)
+            let request = UNNotificationRequest(identifier: "notification.id.01", content: content, trigger: trigger)
+            
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }
+    }
+    
     
     
     //     User Default Functions - Called in "didUpdateNotificationStateFor"
     
     func userDefaultAutoCloneFunction() {
         if autoCloneDefault == "1" {
-            //            uiSwitch.isOn = true
             writeBLEData(string: cmdAutoCloneEnabled)
             
         }
         else if autoCloneDefault == "0" {
-            //            uiSwitch.isOn = false
             customWriteGlitch = true
             writeBLEData(string: cmdAutoCloneDisabled)
         }
     }
+
     
-    
-    
+    @objc func isBLEStillAlive() {
+        if connectedPeripheral?.state != CBPeripheralState.connected {
+            shadowView.isHidden = false
+            activityIndicator.startAnimating()
+            isBLEAlive = false
+            scanForBLEDevice()
+            NSLog("isBLEStillAlive :: Failed")
+            if disconnectedNotification == true {
+            notificationConnectionLost()
+            }
+        } else {
+            isBLEAlive = true
+            disconnectedNotification = true
+            if reconnectedNotification == true {
+                reconnectedNotification = false
+                notificationConnectionRestored()
+            }
+//            NSLog("isBLEStillAlive :: Passed")
+        }
+    }
 }
 

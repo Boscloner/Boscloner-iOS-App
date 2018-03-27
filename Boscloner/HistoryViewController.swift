@@ -52,7 +52,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         historyTableView.dataSource = self
         
         // History Timer in Action - Calls Func to update the tableview
-        historyViewTableUpdateTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(HistoryViewController.updateTableView), userInfo: nil, repeats: true)
+        historyViewTableUpdateTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(HistoryViewController.updateTableView), userInfo: nil, repeats: true)
         
     }
     
@@ -130,6 +130,10 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
     
     func showInputDialogMoreDetails() {
         
+        if isBLEAlive == false {
+            notConnectedWarning()
+        } else {
+        
         let alertController = UIAlertController(title: "Write RFID Tag", message: "Write New RFID Badge from History File Entry? \n \((historyLogFileShort[selectedBadge])) ", preferredStyle: .alert)
         
         //the confirm action taking the inputs
@@ -147,7 +151,21 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         //Presenting the Dialog Box to the User
         self.present(alertController, animated: true, completion: nil)
     }
+    }
     
+    // BLE Device Not Connected Dialog Alert Pop-up
+    func notConnectedWarning() {
+        let alertController = UIAlertController(title: "Boscloner Unavailable", message: "Ensure the Boscloner boards are powered on and within range.", preferredStyle: .alert)
+        
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel) { (_) in }
+        
+        //adding the action to dialogbox
+        alertController.addAction(cancelAction)
+        
+        //finally presenting the dialog box
+        self.present(alertController, animated: true, completion: nil)
+    }
     
 }
 
