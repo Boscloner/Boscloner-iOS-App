@@ -140,8 +140,7 @@ class HistoryViewController: UIViewController, UITableViewDataSource, UITableVie
         let confirmAction = UIAlertAction(title: "Write", style: .default) { (_) in
             writeFromHistoryFile = true
             self.VC.writeCustomBadgeFromHistory(historyBadge: "\(historyLogFileShort[self.selectedBadge])")
-            self.VC.terminalOutput.append("On-Demand Write from History: \(historyLogFileShort[self.selectedBadge])")
-
+            terminalOutput.append("Written from History: \(historyLogFileShort[self.selectedBadge])")
         }
         
         //Cancel Action Trigged, Nothing Happens

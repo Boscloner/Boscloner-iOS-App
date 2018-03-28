@@ -43,6 +43,9 @@ var reconnectedNotification : Bool = false
 
 var writeFromHistoryFile : Bool = false
 
+// TableView Data Source for the Terminal
+var terminalOutput = [String]()
+
 
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     
@@ -70,9 +73,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     var parsingArray = [String]()
     var receivedArray = [String]()
     var newString : String = ""
-    
-    // TableView Data Source for the Terminal
-    var terminalOutput = [String]()
     
     
     // For app notifications
@@ -376,24 +376,23 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                     firstRun = false
                 }
                     
-                else if autoCloneDefault == "1" && firstRun == false {
+                else if autoCloneDefault == "1" && firstRun == false && writeFromHistoryFile == false {
                     terminalOutput.append("**AutoClone Status: Enabled**")
                 }
                     
                     
-                else if autoCloneDefault == "0" && firstRun == false {
+                else if autoCloneDefault == "0" && firstRun == false && writeFromHistoryFile == false {
                     terminalOutput.append("**AutoClone Status: Disabled**")
                 }
                     
                     
                 else if (autoCloneDefault == "0" || autoCloneDefault == "1") && firstRun == false && writeFromHistoryFile == true {
-                    terminalOutput.append("Wrote from History")
-                    tableView.reloadData()
                     writeFromHistoryFile = false
+                    print("Write operation executed from History Log File")
                 }
                 
                 tableView.reloadData()
-                print("AutoClone Toggled. Clearing Strings. Waiting for more data.")
+                self.tableView.tableViewScrollToBottom(animated: true)
             }
                 
             else if newString.contains("STATUS,MCU") && customWriteGlitch == false {
@@ -555,8 +554,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         timestampRoutine()
         historyLogFile.append(customBadge + "           " + currentTimeStamp)
         historyLogFileShort.append(customBadge)
-        self.defaults.set(historyLogFile, forKey: "\(customBadge)" + "           " + "\(currentTimeStamp)")
-        self.defaults.set(historyLogFileShort, forKey: "\(customBadge)")
+        // Custom Badges not Persistently Stored in History File, Fix this.
+        defaults.set(historyLogFile, forKey: "\(customBadge)" + "           " + "\(currentTimeStamp)")
+        defaults.set(historyLogFileShort, forKey: "\(customBadge)")
         tableView.reloadData()
         self.tableView.tableViewScrollToBottom(animated: true)
     }
