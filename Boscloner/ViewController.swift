@@ -289,7 +289,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             if aCharacteristic.uuid == CBUUID(string: WRITE_CHARACTERISTIC) {
                 writeCharacteristic = aCharacteristic
                 readCharacteristic = aCharacteristic
-                print("Identified write characteristics: \(writeCharacteristic)")
+//                print("Identified write characteristics: \(writeCharacteristic)")
                 connectedPeripheral.setNotifyValue(true, for: readCharacteristic)
                 
             }
@@ -323,7 +323,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
         if let ASCIIstring = NSString(data: characteristic.value!, encoding: String.Encoding.utf8.rawValue) {
             characteristicASCIIValue = ASCIIstring
-            print("Value Received: \((characteristicASCIIValue as String))")
+            print("\((characteristicASCIIValue as String))")
             NotificationCenter.default.post(name:NSNotification.Name(rawValue: "Notify"), object: nil)
             
             // Doing Formatting Stuff
@@ -554,7 +554,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         timestampRoutine()
         historyLogFile.append(customBadge + "           " + currentTimeStamp)
         historyLogFileShort.append(customBadge)
-        // Custom Badges not Persistently Stored in History File, Fix this.
         defaults.set(historyLogFile, forKey: "\(customBadge)" + "           " + "\(currentTimeStamp)")
         defaults.set(historyLogFileShort, forKey: "\(customBadge)")
         tableView.reloadData()
