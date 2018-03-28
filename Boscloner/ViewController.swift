@@ -559,6 +559,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         defaults.set(historyLogFileShort, forKey: "\(customBadge)")
         tableView.reloadData()
         self.tableView.tableViewScrollToBottom(animated: true)
+        
+        self.defaults.set(historyLogFile, forKey: "HistoryLogFileKey")
+        self.defaults.set(historyLogFileShort, forKey: "HistoryLogFileShortKey")
     }
     
     func writeCustomBadgeFromHistory(historyBadge: String) {
@@ -606,7 +609,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             disconnectedNotification = false
             reconnectedNotification = true
             let content = UNMutableNotificationContent()
-            content.title = "Connection to the Boscloner Lost"
+            content.title = "Boscloner Connection Lost"
             content.body = "Ensure the Boscloner is powered on and within range"
             content.sound = UNNotificationSound.default()
             
