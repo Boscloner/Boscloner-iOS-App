@@ -401,9 +401,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     // Update UI and History Log File with Newly Retrieved Badge ID
     func updateUI(badgeID : String) {
         timestampRoutine()
-        historyLogFile.append(badgeID + "               " + currentTimeStamp)
+        historyLogFile.append(badgeID + "           " + currentTimeStamp)
         historyLogFileShort.append(badgeID)
-        self.defaults.set(historyLogFile, forKey: "\(badgeID)" + "               " + "\(currentTimeStamp)")
+        self.defaults.set(historyLogFile, forKey: "\(badgeID)" + "           " + "\(currentTimeStamp)")
         self.defaults.set(historyLogFileShort, forKey: "\(badgeID)")
         parsingArray = [String]()
         newString = ""
@@ -484,15 +484,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         cell.textLabel?.text = text
         cell.textLabel?.textColor = UIColor.green
         
-        tableView.rowHeight = UITableViewAutomaticDimension;
-        tableView.estimatedRowHeight = 44;
-        
-//        tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
-//        tableView.estimatedSectionHeaderHeight = 30;
-//        
-//        tableView.sectionFooterHeight = UITableViewAutomaticDimension;
-//        tableView.estimatedSectionFooterHeight = 30;
-        
         return cell
     }
     
@@ -548,9 +539,9 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         writeBLEData(string: "$!CLONE,\(customBadge)?$")
         terminalOutput.append("Custom ID Written: \(customBadge)")
         timestampRoutine()
-        historyLogFile.append(customBadge + "               " + currentTimeStamp)
+        historyLogFile.append(customBadge + "           " + currentTimeStamp)
         historyLogFileShort.append(customBadge)
-        self.defaults.set(historyLogFile, forKey: "\(customBadge)" + "               " + "\(currentTimeStamp)")
+        self.defaults.set(historyLogFile, forKey: "\(customBadge)" + "           " + "\(currentTimeStamp)")
         self.defaults.set(historyLogFileShort, forKey: "\(customBadge)")
         tableView.reloadData()
         self.tableView.tableViewScrollToBottom(animated: true)
@@ -594,6 +585,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
     }
     
+    // Sending Local Notification when BLE Connection to the Boscloner is Lost
+    // Using Various Booleans to Ensure Only One Notification is Sent Per Occurence
     func notificationConnectionLost() {
         
         if disconnectedNotification == true {
@@ -612,6 +605,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     }
     
     
+    // Sending Local Notification when BLE Connection to the Boscloner is Restored
+    // Using Various Booleans to Ensure Only One Notification is Sent Per Occurence
     func notificationConnectionRestored() {
         
         if disconnectedNotification == true {
@@ -632,7 +627,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     
     //     User Default Functions - Called in "didUpdateNotificationStateFor"
-    
     func userDefaultAutoCloneFunction() {
         if autoCloneDefault == "1" {
             writeBLEData(string: cmdAutoCloneEnabled)

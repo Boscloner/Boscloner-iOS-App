@@ -26,6 +26,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jM5-MH-kau">
+                                <rect key="frame" x="0.0" y="89" width="375" height="723"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eb8-WL-rx4" userLabel="ActivityIndicatorView">
+                                        <rect key="frame" x="9.6666666666666572" y="110" width="357" height="70"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YVk-g4-aEZ">
+                                                <rect key="frame" x="160" y="0.0" width="37" height="37"/>
+                                                <subviews>
+                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="KVS-yw-fmQ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
+                                                    </activityIndicatorView>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="37" id="1Oh-D8-qQm"/>
+                                                    <constraint firstAttribute="height" constant="37" id="b4z-hh-Fiy"/>
+                                                </constraints>
+                                            </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attempting Connection to Boscloner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7u-5n-8JK">
+                                                <rect key="frame" x="32" y="38" width="293.33333333333331" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="293.67000000000002" id="Ybj-n4-KuG"/>
+                                                    <constraint firstAttribute="height" constant="32" id="jMl-cs-Swj"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
+                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="4Vb-lr-ooO"/>
+                                            <constraint firstItem="YVk-g4-aEZ" firstAttribute="top" secondItem="eb8-WL-rx4" secondAttribute="top" id="6mC-DP-c0R"/>
+                                            <constraint firstItem="YVk-g4-aEZ" firstAttribute="centerX" secondItem="eb8-WL-rx4" secondAttribute="centerX" id="KmR-ai-eYo"/>
+                                            <constraint firstAttribute="bottom" secondItem="n7u-5n-8JK" secondAttribute="bottom" id="T0E-fh-efY"/>
+                                            <constraint firstItem="n7u-5n-8JK" firstAttribute="centerX" secondItem="eb8-WL-rx4" secondAttribute="centerX" id="o7D-1a-07H"/>
+                                            <constraint firstAttribute="width" constant="357" id="yV1-Q9-2Hd"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="eb8-WL-rx4" firstAttribute="top" secondItem="jM5-MH-kau" secondAttribute="top" constant="110" id="FLS-Rg-CDM"/>
+                                    <constraint firstItem="eb8-WL-rx4" firstAttribute="centerX" secondItem="jM5-MH-kau" secondAttribute="centerX" id="bi9-2g-i6N"/>
+                                    <constraint firstItem="eb8-WL-rx4" firstAttribute="centerX" secondItem="jM5-MH-kau" secondAttribute="centerX" id="wa8-zK-GF5"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJi-mO-FQT" userLabel="BottomView">
                                 <rect key="frame" x="0.0" y="644" width="375" height="85"/>
                                 <subviews>
@@ -84,16 +130,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="QMd-5E-Qgh" firstAttribute="top" secondItem="lJi-mO-FQT" secondAttribute="top" constant="4" id="Ftb-me-XfM"/>
-                                    <constraint firstAttribute="bottom" secondItem="QMd-5E-Qgh" secondAttribute="bottom" constant="4" id="Q6o-zp-A7n"/>
                                     <constraint firstAttribute="trailing" secondItem="YrA-uC-Xni" secondAttribute="trailing" constant="36" id="VN2-zH-Jru"/>
-                                    <constraint firstAttribute="height" constant="85" id="jTL-6N-09G"/>
                                     <constraint firstItem="QMd-5E-Qgh" firstAttribute="leading" secondItem="lJi-mO-FQT" secondAttribute="leading" constant="20" id="s6s-5p-UYP"/>
                                     <constraint firstAttribute="bottom" secondItem="YrA-uC-Xni" secondAttribute="bottom" constant="16" id="tgF-Jf-s1E"/>
                                     <constraint firstItem="YrA-uC-Xni" firstAttribute="top" secondItem="lJi-mO-FQT" secondAttribute="top" constant="9" id="xbC-jN-D5V"/>
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkE-HX-EdJ">
-                                <rect key="frame" x="0.0" y="729" width="375" height="83"/>
+                                <rect key="frame" x="0.0" y="763" width="375" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <tabBarItem systemItem="history" id="Yx2-Il-qd9"/>
@@ -153,56 +197,6 @@
                                     <constraint firstAttribute="width" constant="270" id="lQz-LQ-WTM"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jM5-MH-kau">
-                                <rect key="frame" x="0.0" y="89" width="375" height="723"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eb8-WL-rx4" userLabel="ActivityIndicatorView">
-                                        <rect key="frame" x="9.6666666666666572" y="110" width="357" height="70"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YVk-g4-aEZ">
-                                                <rect key="frame" x="160" y="6" width="37" height="37"/>
-                                                <subviews>
-                                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="KVS-yw-fmQ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
-                                                    </activityIndicatorView>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="37" id="1Oh-D8-qQm"/>
-                                                    <constraint firstAttribute="height" constant="37" id="b4z-hh-Fiy"/>
-                                                </constraints>
-                                            </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Attempting Connection to Boscloner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7u-5n-8JK">
-                                                <rect key="frame" x="29" y="36" width="308" height="26"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="26" id="9pZ-7M-F8a"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="295" id="Ogj-Bg-jZb"/>
-                                                    <constraint firstAttribute="width" constant="308" id="ciP-uc-PJv"/>
-                                                    <constraint firstAttribute="height" constant="26" id="l2v-fz-mxq"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="20"/>
-                                                <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="0.18894477739726026" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="70" id="4Vb-lr-ooO"/>
-                                            <constraint firstItem="n7u-5n-8JK" firstAttribute="top" secondItem="eb8-WL-rx4" secondAttribute="top" constant="38" id="Jxn-cq-gYP"/>
-                                            <constraint firstItem="YVk-g4-aEZ" firstAttribute="centerX" secondItem="eb8-WL-rx4" secondAttribute="centerX" id="KmR-ai-eYo"/>
-                                            <constraint firstItem="n7u-5n-8JK" firstAttribute="centerX" secondItem="eb8-WL-rx4" secondAttribute="centerX" id="Ttx-HG-bgs"/>
-                                            <constraint firstItem="YVk-g4-aEZ" firstAttribute="top" secondItem="eb8-WL-rx4" secondAttribute="top" constant="6" id="kim-fj-V4y"/>
-                                            <constraint firstItem="YVk-g4-aEZ" firstAttribute="centerX" secondItem="n7u-5n-8JK" secondAttribute="centerX" id="ott-vp-tqQ"/>
-                                            <constraint firstAttribute="width" constant="357" id="yV1-Q9-2Hd"/>
-                                        </constraints>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="eb8-WL-rx4" firstAttribute="top" secondItem="jM5-MH-kau" secondAttribute="top" constant="110" id="FLS-Rg-CDM"/>
-                                    <constraint firstItem="eb8-WL-rx4" firstAttribute="centerX" secondItem="jM5-MH-kau" secondAttribute="centerX" id="bi9-2g-i6N"/>
-                                    <constraint firstItem="eb8-WL-rx4" firstAttribute="centerX" secondItem="jM5-MH-kau" secondAttribute="centerX" id="wa8-zK-GF5"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -210,12 +204,12 @@
                             <constraint firstItem="lJi-mO-FQT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7Q6-0N-XzY"/>
                             <constraint firstItem="jM5-MH-kau" firstAttribute="top" secondItem="AjJ-UO-fx1" secondAttribute="bottom" constant="8" id="AcZ-ET-r5P"/>
                             <constraint firstAttribute="bottom" secondItem="NkE-HX-EdJ" secondAttribute="bottom" id="EoH-up-hUP"/>
-                            <constraint firstItem="NkE-HX-EdJ" firstAttribute="top" secondItem="lJi-mO-FQT" secondAttribute="bottom" id="G63-SM-P1y"/>
                             <constraint firstAttribute="trailing" secondItem="RBx-MN-w3G" secondAttribute="trailing" id="IsU-zN-Adt"/>
                             <constraint firstItem="lJi-mO-FQT" firstAttribute="top" secondItem="RBx-MN-w3G" secondAttribute="bottom" id="NKB-2X-w1W"/>
                             <constraint firstAttribute="trailing" secondItem="lJi-mO-FQT" secondAttribute="trailing" id="PUM-II-bxU"/>
                             <constraint firstItem="AjJ-UO-fx1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="U9f-gd-ik4"/>
                             <constraint firstItem="RBx-MN-w3G" firstAttribute="top" secondItem="AjJ-UO-fx1" secondAttribute="bottom" constant="8" id="W6k-hO-flt"/>
+                            <constraint firstItem="JiD-N0-Foh" firstAttribute="top" secondItem="lJi-mO-FQT" secondAttribute="bottom" id="Xkh-kA-t9S"/>
                             <constraint firstAttribute="bottom" secondItem="jM5-MH-kau" secondAttribute="bottom" id="c65-he-GCV"/>
                             <constraint firstItem="jM5-MH-kau" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cVb-6F-3SM"/>
                             <constraint firstItem="RBx-MN-w3G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="f5y-DK-Umi"/>
@@ -237,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1865.625" y="217.5"/>
+            <point key="canvasLocation" x="1864.8" y="217.24137931034483"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Een-Rz-qKh">
@@ -251,18 +245,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rn7-iu-KlP">
-                                <rect key="frame" x="71" y="321" width="233" height="76"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rn7-iu-KlP">
+                                <rect key="frame" x="71" y="396" width="233" height="20"/>
                                 <string key="text">Access Boscloner Preferences
 in System Settings</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqc-jK-OzO">
-                                <rect key="frame" x="159" y="391" width="57" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqc-jK-OzO">
+                                <rect key="frame" x="159" y="418" width="57" height="30"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
                                     <action selector="goToSettings:" destination="cpO-rZ-Upb" eventType="touchUpInside" id="lSn-OD-M8P"/>
@@ -270,12 +262,18 @@ in System Settings</string>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Rn7-iu-KlP" firstAttribute="centerY" secondItem="Yny-Ba-an7" secondAttribute="centerY" id="53b-zQ-vqe"/>
+                            <constraint firstItem="rqc-jK-OzO" firstAttribute="centerX" secondItem="Yny-Ba-an7" secondAttribute="centerX" id="IEu-Jq-lSw"/>
+                            <constraint firstItem="rqc-jK-OzO" firstAttribute="top" secondItem="Rn7-iu-KlP" secondAttribute="bottom" constant="1.6699999999999999" id="WVY-Ud-k39"/>
+                            <constraint firstItem="Rn7-iu-KlP" firstAttribute="centerX" secondItem="Yny-Ba-an7" secondAttribute="centerX" id="oBu-AP-T4l"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="more" id="BQD-gD-Y4D"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="37Q-aT-xj6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="504" y="1319"/>
+            <point key="canvasLocation" x="505" y="975"/>
         </scene>
         <!--View Controller - History-->
         <scene sceneID="ikU-YM-2wb">
@@ -289,61 +287,8 @@ in System Settings</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fMQ-n0-t9j">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OQS-uB-U88" userLabel="TopView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="124"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Boscloner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agY-gO-Ys4">
-                                                <rect key="frame" x="16" y="43" width="168" height="39"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="40"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bosclonerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="iX7-yG-6Cw">
-                                                <rect key="frame" x="265" y="43" width="86" height="69"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All-In-One RFID Cloning Toolkit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nf-qU-lOz">
-                                                <rect key="frame" x="16" y="83" width="238" height="21"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="okQ-4Y-cNP">
-                                <rect key="frame" x="0.0" y="685" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <items>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="swl-CY-NWY"/>
-                                    <barButtonItem systemItem="action" id="HnJ-yk-btk">
-                                        <connections>
-                                            <action selector="historyShareButton:" destination="1Zg-VN-qRb" id="9Sq-WD-mkt"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JYp-SP-pij"/>
-                                    <barButtonItem systemItem="trash" id="DHu-D9-11C">
-                                        <connections>
-                                            <action selector="historyDeleteButton:" destination="1Zg-VN-qRb" id="7Eq-Sq-KhV"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="A0M-Y1-G14"/>
-                                </items>
-                            </toolbar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Psu-mR-4xw">
-                                <rect key="frame" x="0.0" y="115" width="375" height="570"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Psu-mR-4xw">
+                                <rect key="frame" x="0.0" y="89" width="375" height="587"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -368,8 +313,71 @@ in System Settings</string>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KM-Ji-w9U" userLabel="TopView">
+                                <rect key="frame" x="52.666666666666657" y="30" width="270" height="51"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All-In-One RFID Cloning Toolkit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usy-gV-Wrw">
+                                        <rect key="frame" x="0.0" y="31" width="196" height="17"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Boscloner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qfQ-pI-HM4">
+                                        <rect key="frame" x="0.0" y="3" width="125" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="BodoniSvtyTwoSCITCTT-Book" family="Bodoni 72 Smallcaps" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bosclonerLogo" translatesAutoresizingMaskIntoConstraints="NO" id="jLx-gy-Xix">
+                                        <rect key="frame" x="211" y="3" width="56" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="270" id="4mQ-zf-bz1"/>
+                                    <constraint firstAttribute="height" constant="51" id="DWz-uB-FdM"/>
+                                </constraints>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okQ-4Y-cNP">
+                                <rect key="frame" x="0.0" y="676" width="375" height="52"/>
+                                <color key="backgroundColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="B5X-LA-ZOP"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="swl-CY-NWY"/>
+                                    <barButtonItem systemItem="action" id="HnJ-yk-btk">
+                                        <connections>
+                                            <action selector="historyShareButton:" destination="1Zg-VN-qRb" id="9Sq-WD-mkt"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="JYp-SP-pij"/>
+                                    <barButtonItem systemItem="trash" id="DHu-D9-11C">
+                                        <connections>
+                                            <action selector="historyDeleteButton:" destination="1Zg-VN-qRb" id="7Eq-Sq-KhV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="A0M-Y1-G14"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Psu-mR-4xw" firstAttribute="leading" secondItem="qK7-Zf-mKU" secondAttribute="leading" id="5yJ-cT-s4V"/>
+                            <constraint firstAttribute="trailing" secondItem="okQ-4Y-cNP" secondAttribute="trailing" id="8jd-eY-F9S"/>
+                            <constraint firstItem="okQ-4Y-cNP" firstAttribute="centerX" secondItem="qK7-Zf-mKU" secondAttribute="centerX" id="9BE-oA-S2t"/>
+                            <constraint firstAttribute="bottom" secondItem="okQ-4Y-cNP" secondAttribute="bottom" constant="84" id="H7K-Rn-hUx"/>
+                            <constraint firstItem="okQ-4Y-cNP" firstAttribute="leading" secondItem="qK7-Zf-mKU" secondAttribute="leading" id="LZN-Z4-wVd"/>
+                            <constraint firstItem="9KM-Ji-w9U" firstAttribute="centerX" secondItem="qK7-Zf-mKU" secondAttribute="centerX" id="XOK-7h-NiD"/>
+                            <constraint firstAttribute="trailing" secondItem="Psu-mR-4xw" secondAttribute="trailing" id="d8O-zV-Zh4"/>
+                            <constraint firstItem="9KM-Ji-w9U" firstAttribute="top" secondItem="qK7-Zf-mKU" secondAttribute="top" constant="30" id="hDC-Yk-Izp"/>
+                            <constraint firstItem="Psu-mR-4xw" firstAttribute="centerX" secondItem="qK7-Zf-mKU" secondAttribute="centerX" id="phY-4a-REQ"/>
+                            <constraint firstItem="okQ-4Y-cNP" firstAttribute="top" secondItem="Psu-mR-4xw" secondAttribute="bottom" id="wZl-XL-LKz"/>
+                            <constraint firstItem="Psu-mR-4xw" firstAttribute="top" secondItem="9KM-Ji-w9U" secondAttribute="bottom" constant="8" id="yCM-zO-jWV"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="history" id="Kg3-rn-cmP"/>
                     <toolbarItems/>
@@ -380,7 +388,7 @@ in System Settings</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egU-OT-yVm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1866" y="1319"/>
+            <point key="canvasLocation" x="1865" y="975"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="8Zm-oe-8tA">
