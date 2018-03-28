@@ -41,6 +41,8 @@ var isBLEAliveNotificationTimer = Timer()
 var disconnectedNotification : Bool = false
 var reconnectedNotification : Bool = false
 
+var writeFromHistoryFile : Bool = false
+
 
 class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate {
     
@@ -191,6 +193,11 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+//        if isBLEAlive == true {
+//            tableView.reloadData()
+//            self.tableView.tableViewScrollToBottom(animated: true)
+//        }
         
         // isBLEAliveTimer Begins Here to Monitor the Current Connection State
         // The App will Alert the User if the Connection has been Dropped, and will automatically reconnect when
@@ -377,6 +384,13 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
                 else if autoCloneDefault == "0" && firstRun == false {
                     terminalOutput.append("**AutoClone Status: Disabled**")
                 }
+                    
+                    
+                else if (autoCloneDefault == "0" || autoCloneDefault == "1") && firstRun == false && writeFromHistoryFile == true {
+                    terminalOutput.append("Wrote from History")
+                    tableView.reloadData()
+                    writeFromHistoryFile = false
+                }
                 
                 tableView.reloadData()
                 print("AutoClone Toggled. Clearing Strings. Waiting for more data.")
@@ -550,7 +564,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     func writeCustomBadgeFromHistory(historyBadge: String) {
         customWriteGlitch = false
         writeBLEData(string: "$!CLONE,\(historyBadge)?$")
-        terminalOutput.append("On-Demand Write from History: \(historyBadge)")
     }
     
     
