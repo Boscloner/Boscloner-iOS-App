@@ -21,12 +21,14 @@
 			<array>
 				<string>HID ProxCard (125Khz)</string>
 				<string>HID Indala (125Khz)</string>
+				<string>EM4100 (125khz)</string>
 				<string>HID iClass Legacy (13.56Mhz)</string>
 			</array>
 			<key>Values</key>
 			<array>
 				<string>typeHIDProx</string>
 				<string>typeHIDIndala</string>
+				<string>typeEM4100</string>
 				<string>typeHIDiClass</string>
 			</array>
 		</dict>

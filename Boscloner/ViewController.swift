@@ -69,8 +69,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     var receivedArray = [String]()
     var newString : String = ""
     
-    // Testing out a table view
-    let terminalPrefix : String = "Boscloner$"
+    // TableView Data Source for the Terminal
     var terminalOutput = [String]()
     
     
@@ -211,10 +210,8 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Close BLE Connection if it exists
-        
     }
+    
     
     //Begin BLE Scanning for devices that use FFE0
     @objc func scanForBLEDevice() {
@@ -242,7 +239,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
         centralManager.connect(connectedPeripheral, options: nil)
         print("Connecting to Peripheral...")
-        
     }
     
     
@@ -487,6 +483,16 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         
         cell.textLabel?.text = text
         cell.textLabel?.textColor = UIColor.green
+        
+        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.estimatedRowHeight = 44;
+        
+//        tableView.sectionHeaderHeight = UITableViewAutomaticDimension;
+//        tableView.estimatedSectionHeaderHeight = 30;
+//        
+//        tableView.sectionFooterHeight = UITableViewAutomaticDimension;
+//        tableView.estimatedSectionFooterHeight = 30;
+        
         return cell
     }
     
@@ -535,7 +541,6 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
         //finally presenting the dialog box
         self.present(alertController, animated: true, completion: nil)
     }
-    
     
     
     func writeCustomBadge(customBadge: String) {
