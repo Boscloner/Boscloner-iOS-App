@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YiH-Iv-rfr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YiH-Iv-rfr">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Bodoni72-Book-SmallCaps.ttf">
-            <string>BodoniSvtyTwoSCITCTT-Book</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
@@ -99,12 +94,12 @@
                                 </items>
                             </tabBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RBx-MN-w3G">
-                                <rect key="frame" x="0.0" y="89" width="375" height="555"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="549"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseIdentifier" id="ic5-5E-JTl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseIdentifier" id="ic5-5E-JTl">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ic5-5E-JTl" id="g7b-KU-Fqs">
@@ -116,7 +111,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjJ-UO-fx1" userLabel="TopView">
-                                <rect key="frame" x="52.666666666666657" y="30" width="270" height="51"/>
+                                <rect key="frame" x="52.666666666666657" y="36" width="270" height="51"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All-In-One RFID Cloning Toolkit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a86-kZ-Dvq">
                                         <rect key="frame" x="0.0" y="31" width="196" height="17"/>
@@ -144,7 +139,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jM5-MH-kau">
-                                <rect key="frame" x="0.0" y="89" width="375" height="723"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="717"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eb8-WL-rx4" userLabel="ActivityIndicatorView">
                                         <rect key="frame" x="9.6666666666666572" y="110" width="357" height="70"/>
@@ -199,7 +194,7 @@
                             <constraint firstAttribute="trailing" secondItem="RBx-MN-w3G" secondAttribute="trailing" id="IsU-zN-Adt"/>
                             <constraint firstItem="lJi-mO-FQT" firstAttribute="top" secondItem="RBx-MN-w3G" secondAttribute="bottom" id="NKB-2X-w1W"/>
                             <constraint firstAttribute="trailing" secondItem="lJi-mO-FQT" secondAttribute="trailing" id="PUM-II-bxU"/>
-                            <constraint firstItem="AjJ-UO-fx1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="U9f-gd-ik4"/>
+                            <constraint firstItem="AjJ-UO-fx1" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="36" id="U9f-gd-ik4"/>
                             <constraint firstItem="RBx-MN-w3G" firstAttribute="top" secondItem="AjJ-UO-fx1" secondAttribute="bottom" constant="8" id="W6k-hO-flt"/>
                             <constraint firstItem="JiD-N0-Foh" firstAttribute="top" secondItem="lJi-mO-FQT" secondAttribute="bottom" id="Xkh-kA-t9S"/>
                             <constraint firstAttribute="bottom" secondItem="jM5-MH-kau" secondAttribute="bottom" id="c65-he-GCV"/>
@@ -280,13 +275,13 @@ in System Settings</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Psu-mR-4xw">
-                                <rect key="frame" x="0.0" y="89" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="546"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexColor" red="0.12984204290000001" green="0.12984612579999999" blue="0.12984395030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseIdentifier" id="BpQ-ZF-d4u">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseIdentifier" id="BpQ-ZF-d4u">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BpQ-ZF-d4u" id="2eF-s7-utq">
@@ -298,7 +293,7 @@ in System Settings</string>
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9KM-Ji-w9U" userLabel="TopView">
-                                <rect key="frame" x="52.666666666666657" y="30" width="270" height="51"/>
+                                <rect key="frame" x="52.666666666666657" y="36" width="270" height="51"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="All-In-One RFID Cloning Toolkit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usy-gV-Wrw">
                                         <rect key="frame" x="0.0" y="31" width="196" height="17"/>
@@ -326,7 +321,7 @@ in System Settings</string>
                                 </constraints>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okQ-4Y-cNP">
-                                <rect key="frame" x="0.0" y="636" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="641" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.57045853140000002" green="0.57047235969999999" blue="0.57046490910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="swl-CY-NWY"/>
@@ -354,7 +349,7 @@ in System Settings</string>
                             <constraint firstItem="okQ-4Y-cNP" firstAttribute="leading" secondItem="qK7-Zf-mKU" secondAttribute="leading" id="LZN-Z4-wVd"/>
                             <constraint firstItem="9KM-Ji-w9U" firstAttribute="centerX" secondItem="qK7-Zf-mKU" secondAttribute="centerX" id="XOK-7h-NiD"/>
                             <constraint firstAttribute="trailing" secondItem="Psu-mR-4xw" secondAttribute="trailing" id="d8O-zV-Zh4"/>
-                            <constraint firstItem="9KM-Ji-w9U" firstAttribute="top" secondItem="qK7-Zf-mKU" secondAttribute="top" constant="30" id="hDC-Yk-Izp"/>
+                            <constraint firstItem="9KM-Ji-w9U" firstAttribute="top" secondItem="qK7-Zf-mKU" secondAttribute="top" constant="36" id="hDC-Yk-Izp"/>
                             <constraint firstItem="Psu-mR-4xw" firstAttribute="centerX" secondItem="qK7-Zf-mKU" secondAttribute="centerX" id="phY-4a-REQ"/>
                             <constraint firstItem="okQ-4Y-cNP" firstAttribute="top" secondItem="Psu-mR-4xw" secondAttribute="bottom" id="wZl-XL-LKz"/>
                             <constraint firstItem="Psu-mR-4xw" firstAttribute="top" secondItem="9KM-Ji-w9U" secondAttribute="bottom" constant="8" id="yCM-zO-jWV"/>

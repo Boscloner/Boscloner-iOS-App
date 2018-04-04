@@ -173,7 +173,7 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
             print("No default history file to load. Using empty file that was set globally.")
         }
         
-        
+
         
         // Setting Delegates and Such
         centralManager = CBCentralManager(delegate: self, queue: nil)
@@ -230,22 +230,38 @@ class ViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDe
     
     // Discovering BLE Devices
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if (peripheral.name != nil) {
-            print("Found Peripheral: \(peripheral.name!)")
+        
+        // Original Code to Connect to first BLE Device to have the proper characteristics
+        
+        //        if (peripheral.name != nil) {
+        //            print("Found Peripheral: \(peripheral.name!)")
+        //        }
+        //        else {
+        //            print("Found something with unknown name")
+        //        }
+        
+        
+        
+        // Modified Code to ensure that the app only connects to devices that have the
+        // Proper characteristics & the device name of the BLE modules used, in this case, DSD TECH.
+        // In testing, we found the app might connect to devices that matched the service characteristics, even
+        // if they weren't actual Boscloner boards.
+        if peripheral.name != "DSD TECH" {
+            print("Didn't find a Boscloner board with the name of HM-10. I'm going to keep searching")
         }
+            
         else {
-            print("Found something with unknown name")
+            print("Found Peripheral: \(peripheral.name!)")
+            
+            // Save reference to the peripheral
+            connectedPeripheral = peripheral
+            
+            centralManager.stopScan()
+            print("Stopping Scan")
+            
+            centralManager.connect(connectedPeripheral, options: nil)
+            print("Connecting to Peripheral...")
         }
-        
-        // Save reference to the peripheral
-        
-        connectedPeripheral = peripheral
-        
-        centralManager.stopScan()
-        print("Stopping Scan")
-        
-        centralManager.connect(connectedPeripheral, options: nil)
-        print("Connecting to Peripheral...")
     }
     
     
